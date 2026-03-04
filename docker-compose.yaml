@@ -1,0 +1,31 @@
+version: "3.9"
+
+services: 
+  db:
+    image: postgres:16
+    container_name: project-inventory
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: project-inventory
+    restart: always
+    ports:
+      - 5433:5432
+    volumes:
+      - banco-data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    ports:
+      - 3001:3001
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/project-inventory
+      PORT: 3001
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+      - /app/node_modules
+
+volumes:
+  banco-data:
