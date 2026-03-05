@@ -1,10 +1,10 @@
-import { eq } from "drizzle-orm";
 import { db } from "../../db/connection";
-import { newUser, User, users } from "../../db/schema";
-import bcrypt from "bcrypt";
-import { configDotenv } from "dotenv";
-
-configDotenv();
+import { newUser, users } from "../../db/schema";
+import {
+  formatUser,
+  getUserByEmail,
+  hashPassword,
+} from "../../utils/helper/helper";
 
 export const createUser = async (data: newUser) => {
   const existingUser = await getUserByEmail(data.email);
@@ -23,25 +23,4 @@ export const createUser = async (data: newUser) => {
   const user = result[0];
 
   return formatUser(user);
-};
-
-//helper functions
-
-export const getUserByEmail = async (email: string) => {
-  const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
-  const user = result[0];
-  if (!user || user.deletedAt) return null;
-  return user;
-};
-
-export const hashPassword = async (password: string) => {
-  return bcrypt.hash(password, 10);
-};
-
-export const formatUser = (user: User) => {
-  const { password, ...userWithoutPassword } = user;
-  if (userWithoutPassword.avatar) {
-    userWithoutPassword.avatar = `${process.env.BASE_URL}/static/avatars/${userWithoutPassword.avatar}`;
-  }
-  return userWithoutPassword;
 };
