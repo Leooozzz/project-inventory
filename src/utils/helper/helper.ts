@@ -41,11 +41,7 @@ export const createToken = (user: User) => {
   return createJsonWebToken({ id: user.id });
 };
 export const getUserById = async (id: string) => {
-  const result = await db
-    .select({})
-    .from(users)
-    .where(eq(users.id, id))
-    .limit(1);
+  const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
   const user = result[0];
   return result[0] || null;
 };
