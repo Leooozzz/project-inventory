@@ -6,7 +6,7 @@ export const moveTypeEnum=pgEnum('move_type',['in','out'])
 
 export const moves = pgTable('moves',{
     id:uuid('id').primaryKey().defaultRandom(),
-    productId:uuid('producti_id').notNull().references(()=>products.id),
+    productId:uuid('product_id').notNull().references(()=>products.id),
     userId:uuid('user_id').notNull().references(()=>users.id),
     type:moveTypeEnum('type').notNull(),
     quantity:numeric('quantity').notNull(),

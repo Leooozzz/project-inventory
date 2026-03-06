@@ -9,5 +9,6 @@ export const login: RequestHandler = async (req, res) => {
   if (!result) {
     throw new AppError("Invalid credentials", 401);
   }
+  
   res.status(201).json({ error: null, data: result });
 };

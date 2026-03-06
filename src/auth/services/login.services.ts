@@ -1,12 +1,6 @@
-import { eq } from "drizzle-orm";
-import { db } from "../../db/connection";
-import { users } from "../../db/schema";
-import {
-  createToken,
-  formatUser,
-  getUserByEmail,
-  verifyPassword,
-} from "../../utils/helper/helper";
+import { getUserByEmail, verifyPassword } from "../../utils/helper/helper";
+import { generateOTP } from "../../otp/services/otp.services";
+import { sendOtpEmail } from "../../email/services/email.services";
 
 export const loginService = async (email: string, password: string) => {
   email = email.toLowerCase();
@@ -15,12 +9,12 @@ export const loginService = async (email: string, password: string) => {
   const isPasswordValid = await verifyPassword(password, user.password);
   if (!isPasswordValid) return null;
 
-  const token = createToken(user);
+  const otp = await generateOTP(user.id);
 
-  await db
-    .update(users)
-    .set({ token, updatedAt: new Date() })
-    .where(eq(users.id, user.id));
-  const userFormated = formatUser(user);
-  return { ...userFormated, token };
+  await sendOtpEmail(user.email, String(otp));
+
+  return {
+    message: `OTP sent`,
+    userId: user.id,
+  };
 };
