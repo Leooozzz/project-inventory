@@ -8,5 +8,5 @@ export const createJsonWebToken = (payload: any) => {
 };
 
 export const readJsonWebToken = (hash: string) => {
-  return jwt.verify(hash, process.env.JSONWEBTOKEN_SECRET!);
+  return jwt.verify(hash, process.env.JSONWEBTOKEN_SECRET!) ;
 };

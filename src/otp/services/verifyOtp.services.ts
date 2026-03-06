@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
 import { db } from "../../db/connection";
-import { otp } from "../../db/schema";
+import { otp, users } from "../../db/schema";
 import { createJsonWebToken } from "../../libs/jwt";
 import { getUserByEmail } from "../../utils/helper/helper";
 
@@ -34,6 +34,8 @@ export const verifyOtpService = async (email: string, code: string) => {
   await db.update(otp).set({ used: true }).where(eq(otp.id, otpUser.id));
 
   const jwt = createJsonWebToken(user.id);
+
+  await db.update(users).set({ token: jwt }).where(eq(users.id, user.id));
 
   return {
     user: {
