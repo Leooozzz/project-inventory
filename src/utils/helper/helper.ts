@@ -10,7 +10,7 @@ import { AppError } from "../apperror";
 
 configDotenv();
 
-export const getUserByEmail = async (email: string) => {
+export const getUserByEmail = async (email: string,includedDeleted:boolean=false) => {
   email = email.toLowerCase();
   const result = await db
     .select()
@@ -18,7 +18,9 @@ export const getUserByEmail = async (email: string) => {
     .where(eq(users.email, email))
     .limit(1);
   const user = result[0];
-  if (!user || user.deletedAt) return null;
+  if(!user) return null
+
+  if (user && user.deletedAt && includedDeleted === false) return null;
   return user;
 };
 

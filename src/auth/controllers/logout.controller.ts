@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { logoutSevice } from "../services/logout.services";
+import { logoutSevice } from "../services/logout.service";
 
 export const logout: RequestHandler = async (req, res) => {
   const authHeader = req.headers.authorization;

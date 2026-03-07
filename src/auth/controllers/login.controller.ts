@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 import { AppError } from "../../utils/apperror";
-import { loginService } from "../services/login.services";
+import { loginService } from "../services/login.service";
 import { loginSchema } from "../schema/login.schema";
 
 export const login: RequestHandler = async (req, res) => {
