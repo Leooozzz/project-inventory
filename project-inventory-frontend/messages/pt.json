@@ -1,0 +1,35 @@
+{
+  "main_page":{
+    "title":"Controle seu estoque e impulsione suas vendas pelo WhatsApp em um só lugar.",
+    "intelligent_management":"GESTÃO INTELIGENTE",
+    "subtitle_management":"A maneira mais facil de gerenciar seu estoque conversar com seus fornecedores e clientes sem ficar com multiplas plataformas aberta.",
+    "button_start":"Começar agora",
+    "how_it_work":"Como funciona",
+    "subtitle_how_it_work":"Configure em minutos e comece a gerenciar sem complicações.",
+    "balance_title":"Saldo em Tempo Real",
+    "balance_subtitle":"Acompanhe o balanço do seu estoque instantaneamente.",
+    "boxes_title":"Controle manual de estoque",
+    "boxes_subtitle":"Registe entradas e saidas de produtos facilmente no sistema.",
+    "whats_title":"Integre seu whatsapp",
+    "whats_subtitle":"Comunique-se com cliente e fornecedores diareamente pela plataforma.",
+    "graph_title":"Relatórios automaticos",
+    "graph_subtitle":"Tenha acesso a graficos de entradas e saidas do seu estoque para melhor gestão.",
+    "verified_title":"Facilidade total",
+    "verified_subtitle":"Não precisa instalar nenhum aplicativo. Se sua equipe sabe usar o whatsapp, então sabe usar o Zentory.",
+    "history_title": "Histórico completo",
+    "history_subtitle": "Acompanhe todas as entradas e saídas de produtos com registro detalhado."
+  },
+  "components":{
+    "header": {
+    "button_header": "Registrar-se",
+    "footer_subtitle":"Gerenciamento de estoque simplificado com controle manual e comunicação integrada via Whatsapp.",
+    "nav_product_title":"Produtos",
+    "nav_product_link_1":"Funcionalidades",
+    "nav_product_link_2":"Preços",
+    "nav_suport_title":"Suporte",
+    "nav_suport_link_1":"Termos de uso",
+    "nav_suport_link_2":"Fale conosco",
+    "footer_rights":"Todos os direitos reservados."
+  }
+  } 
+}

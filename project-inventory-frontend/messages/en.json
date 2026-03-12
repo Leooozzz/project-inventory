@@ -1,0 +1,35 @@
+{
+  "main_page": {
+    "title": "Manage your inventory and boost your sales through WhatsApp, all in one place.",
+    "intelligent_management": "INTELIGENTE MANEGEMENT",
+    "subtitle_management": "The easiest way to manage your inventory is to communicate with your suppliers and customers without having multiple platforms open.",
+    "button_start": "Start now",
+    "how_it_work": "How it work",
+    "subtitle_how_it_work": "Set up in minutes and start managing without complications.",
+    "balance_title": "Real-Time Balance",
+    "balance_subtitle": "Track your inventory balance instantly.",
+    "boxes_title": "Manual inventory control",
+    "boxes_subtitle": "Easily record product entries and exits in the system.",
+    "whats_title": "Integrate your WhatsApp",
+    "whats_subtitle": "Communicate with clients and suppliers daily through the platform.",
+    "graph_title": "Automatic reports",
+    "graph_subtitle": "Gain access to charts of your inventory inflows and outflows for better management.",
+    "verified_title": "Total ease",
+    "verified_subtitle": "No app installation is required. If your team knows how to use WhatsApp, then they know how to use Zentory.",
+    "history_title": "Complete history",
+    "history_subtitle": "Track all product entries and exits with detailed records"
+  },
+  "components": {
+    "header": {
+      "button_header": "Register",
+      "footer_subtitle": "Simplified inventory management with manual control and integrated communication via WhatsApp.",
+      "nav_product_title": "Products",
+      "nav_product_link_1": "Features",
+      "nav_product_link_2": "Prices",
+      "nav_suport_title": "Support",
+      "nav_suport_link_1": "Terms of use",
+      "nav_suport_link_2":"Contact us",
+      "footer_rights":"All rights reserved."
+    }
+  }
+}

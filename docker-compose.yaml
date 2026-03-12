@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:16
+    container_name: project-inventory
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: project-inventory
+    ports:
+      - "5433:5432"
+    volumes:
+      - banco-data:/var/lib/postgresql/data
+
+  backend:
+    container_name: project-inventory-backend
+    build:
+      context: ./project-inventory-backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./project-inventory-backend:/app
+      - /app/node_modules
+      - imagesprofile:/app/public/avatars
+    env_file:
+      - ./project-inventory-backend/.env
+    depends_on:
+      - db
+
+  frontend:
+    container_name: project-inventory-frontend
+    build:
+      context: ./project-inventory-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./project-inventory-frontend:/app
+      - /app/node_modules
+      - /app/.next
+    env_file:
+      - ./project-inventory-frontend/.env
+    depends_on:
+      - backend
+  
+volumes:
+  banco-data:
+  imagesprofile:
