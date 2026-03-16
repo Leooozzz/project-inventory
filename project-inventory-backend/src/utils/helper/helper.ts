@@ -3,7 +3,7 @@ import { User, users } from "../../db/schema";
 import { db } from "../../db/connection";
 import { eq } from "drizzle-orm";
 import { configDotenv } from "dotenv";
-import { createJsonWebToken, readJsonWebToken } from "../../libs/jwt";
+import {  createJsonWebToken, readJsonWebToken } from "../../libs/jwt";
 import { Request } from "express";
 import { tokenTypePayload } from "./types/token.type";
 import { AppError } from "../apperror";
@@ -42,7 +42,7 @@ export const formatUser = (user: User) => {
   return {id,name,email,avatar,isAdmin}
 };
 
-export const createToken = (user: User) => {
+export const createToken =(user: User) => {
   return createJsonWebToken({ id: user.id });
 };
 

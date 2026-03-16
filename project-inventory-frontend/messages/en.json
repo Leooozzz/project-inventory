@@ -28,8 +28,41 @@
       "nav_product_link_2": "Prices",
       "nav_suport_title": "Support",
       "nav_suport_link_1": "Terms of use",
-      "nav_suport_link_2":"Contact us",
-      "footer_rights":"All rights reserved."
+      "nav_suport_link_2": "Contact us",
+      "footer_rights": "All rights reserved."
     }
+  },
+  "login": {
+    "title": "Zentory login",
+    "error_email": "Enter a valid email address.",
+    "error_password": "Password with a minimum of 8 characters.",
+    "button": "Send",
+    "button_2": "Sending",
+    "register_link": "Don't have account? Register"
+  },
+  "otp": {
+    "email": "An code was sent to",
+    "button": "To check",
+    "button_conf": "Checking..."
+  },
+  "dashboard": {
+    "card_1_title": "Stock Value",
+    "card_content": "$",
+    "card_1_subtitle": "Total Stock Value",
+    "card_2_title": "Inflows during the period",
+    "card_2_subtitle": "Transactions",
+    "card_3_title": "Outflows during the period",
+    "card_3_subtitle": "Transactions",
+    "period": "Period",
+    "select_value_1": "Today",
+    "select_value_2": "Last 7 days",
+    "select_value_3": "Last 30 days",
+    "select_value_4": "Last 12 months",
+    "low_stock": "Low stock",
+    "low_stock_subtitle": "Products with quantity close to or below the minimum",
+    "low_stock_alert": "No products with low stock",
+    "stagnant_products": "Stayed products",
+    "stagnant_products_subtitle": "No sales in the selected period",
+    "stagnant_products_alert": "No products stagnant"
   }
 }

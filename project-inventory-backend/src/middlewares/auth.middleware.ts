@@ -1,23 +1,33 @@
-import { RequestHandler } from "express";
-import { AppError } from "../utils/apperror";
-import { validateToken } from "../utils/helper/helper";
+import { Request, RequestHandler } from "express"
+import { readJsonWebToken } from "../libs/jwt";
+import { formatUser, getUserById } from "../utils/helper/helper";
+
+export type TokenTypePayload = {
+  id: string;
+};
+
+export const VerifyRequest = async (req: Request) => {
+  const { authorization } = req.headers;
+
+  if (authorization) {
+    const authSplit = authorization.split("Bearer ");
+    if (authSplit[1]) {
+      const payload = readJsonWebToken(authSplit[1]);
+      if (payload) {
+        const userId = (payload as TokenTypePayload).id;
+        const user = await getUserById(userId);
+        if (user) return user;
+      }
+    }
+  }
+
+  return false;
+};
 
 export const authMiddleware: RequestHandler = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-
-  if (!authHeader) {
-    return next(new AppError("Unauthorized", 401));
-  }
-
-  const [schema, token] = authHeader.split(" ");
-
-  if (schema !== "Bearer" || !token) {
-    return next(new AppError("Unauthorized", 401));
-  }
-
-  const user = await validateToken(token);
+  const user = await VerifyRequest(req);
   if (!user) {
-    return next(new AppError("Unauthorized", 401));
+    return res.status(401).json({ errot: "Acess denied" });
   }
   req.user = user;
 

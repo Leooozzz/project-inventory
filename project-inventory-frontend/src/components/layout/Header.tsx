@@ -32,33 +32,35 @@ export function Header() {
 
   return (
     <header className="bg-gray-50">
-      
       <div className="max-w-7xl mx-auto flex items-center justify-between py-4">
-      <Image
-        src="/images-layout/logo-layout.png"
-        alt="Zentory logo"
-        width={90}
-        height={90}
-      />
+        <Link href={"/"}>
+          <Image
+            src="/images-layout/logo-layout.png"
+            alt="Zentory logo"
+            width={90}
+            height={90}
+          />
+        </Link>
 
-      <div className="flex gap-3">
-        <Select value={locale} onValueChange={changeLanguage}>
-          <SelectTrigger className="flex gap-2 py-5 items-center border-2 cursor-pointer rounded-none">
-            <LucideLanguages size={20} />
-            <SelectValue />
-          </SelectTrigger>
+        <div className="flex gap-3">
+          <Select value={locale} onValueChange={changeLanguage}>
+            <SelectTrigger className="flex gap-2 py-5 items-center border-2 cursor-pointer rounded-none">
+              <LucideLanguages size={20} />
+              <SelectValue />
+            </SelectTrigger>
 
-          <SelectContent>
-            <SelectItem value="pt">Pt-br</SelectItem>
-            <SelectItem value="en">En-us</SelectItem>
-          </SelectContent>
-        </Select>
+            <SelectContent>
+              <SelectItem value="pt">Pt-br</SelectItem>
+              <SelectItem value="en">En-us</SelectItem>
+            </SelectContent>
+          </Select>
 
-        <Button className="py-5 cursor-pointer rounded-none">
-          <Link href={"/auth/register"}>{t("button_header")}</Link>
-        </Button>
+          <Button className="py-5 cursor-pointer rounded-none flex ">
+            <Link href={"/auth/register"}>{t("button_header")}</Link>
+          </Button>
+        </div>
       </div>
-      </div>
+      <Separator />
     </header>
   );
 }

@@ -31,5 +31,38 @@
     "nav_suport_link_2":"Fale conosco",
     "footer_rights":"Todos os direitos reservados."
   }
-  } 
+  },
+  "login":{
+    "title":"Zentory entrar",
+    "error_email":"Digite um email valido.",
+    "error_password":"Senha deve ser no minimo de 8 caracteres.",
+    "button":"Enviar",
+    "button_2":"Enviando",
+    "register_link":"Não tem uma conta? Cadastre-se"
+  },
+  "otp":{
+    "email":"Um codigo foi enviado para ",
+    "button":"Verificar",
+    "button_conf":"Verificando..."
+  },
+  "dashboard":{
+    "card_1_title":"Valor em estoque",
+    "card_content":"R$",
+    "card_1_subtitle":"Valor total em estoque",
+    "card_2_title":"Entradas no período",
+    "card_2_subtitle":"Movimentações",
+    "card_3_title":"Saídas no periodo",
+    "card_3_subtitle":"Movimentações",
+    "period":"Periodo",
+    "select_value_1":"Hoje",
+    "select_value_2":"Últimos 7 dias",
+    "select_value_3":"Últimos 30 dias",
+    "select_value_4":"Últimos 12 meses",
+    "low_stock":"Estoque baixo",
+    "low_stock_subtitle":"Produtos com quantidade proxima ou abaixo do minimo",
+    "low_stock_alert":"Nenhum produto com estoque baixo",
+    "stagnant_products":"Productos estagnados",
+    "stagnant_products_subtitle":"Sem saidas no período selecionado",
+    "stagnant_products_alert":"Nenhum produto com estagnado"
+  }
 }

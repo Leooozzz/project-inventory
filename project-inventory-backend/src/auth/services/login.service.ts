@@ -9,12 +9,6 @@ export const loginService = async (email: string, password: string) => {
   const isPasswordValid = await verifyPassword(password, user.password);
   if (!isPasswordValid) return null;
 
-  const otp = await generateOTP(user.id);
 
-  await sendOtpEmail(user.email, String(otp));
-
-  return {
-    message: `OTP sent`,
-    userId: user.id,
-  };
+  return user
 };

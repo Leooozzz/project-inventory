@@ -1,7 +1,17 @@
-import {NextConfig} from 'next';
-import createNextIntlPlugin from 'next-intl/plugin';
- 
-const nextConfig: NextConfig = {};
- 
+import { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
 const withNextIntl = createNextIntlPlugin();
+
+const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://backend:3001/api/:path*",
+      },
+    ];
+  },
+};
+
 export default withNextIntl(nextConfig);

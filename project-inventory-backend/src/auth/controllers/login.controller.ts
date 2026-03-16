@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import { AppError } from "../../utils/apperror";
 import { loginService } from "../services/login.service";
 import { loginSchema } from "../schema/login.schema";
+import { createToken, formatUser } from "../../utils/helper/helper";
 
 export const login: RequestHandler = async (req, res) => {
   const data = loginSchema.parse(req.body);
@@ -10,5 +11,6 @@ export const login: RequestHandler = async (req, res) => {
     throw new AppError("Invalid credentials", 401);
   }
   
-  res.status(201).json({ error: null, data: result });
+  const token = createToken(result)
+  res.status(201).json({ error: null, data: result,token},);
 };
