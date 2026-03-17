@@ -64,5 +64,18 @@
     "stagnant_products": "Stayed products",
     "stagnant_products_subtitle": "No sales in the selected period",
     "stagnant_products_alert": "No products stagnant"
+  },
+  "category": {
+    "new_category": "New category",
+    "category_header": "Categories",
+    "table_header_name": "Name",
+    "table_header_product": "Product",
+    "table_header_createdAt": "Created on",
+    "table_header_action": "Action",
+    "table_format_date": "en-US",
+    "table_message": "No category found",
+     "category_save":"Save",
+    "category_saving":"Saving",
+    "category_placeholder":"Category name"
   }
 }

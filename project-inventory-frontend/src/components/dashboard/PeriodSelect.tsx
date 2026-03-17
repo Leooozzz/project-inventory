@@ -20,7 +20,7 @@ export function PeriodSelect() {
       <SelectTrigger>
         <SelectValue placeholder="Período" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent >
         <SelectItem value="1">{t("select_value_1")}</SelectItem>
         <SelectItem value="7">{t("select_value_2")}</SelectItem>
         <SelectItem value="30">{t("select_value_3")}</SelectItem>

@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Product } from "../type/product";
 
 
-
 export function lowStock(token: string) {
   return useQuery<Product[]>({
     queryKey: ["low-stock"],

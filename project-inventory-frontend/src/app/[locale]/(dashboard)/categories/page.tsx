@@ -8,7 +8,7 @@ export default async function Page(){
     return(
         <main className="p-4">
             <div>
-                <Categories/>
+                <Categories token={token}/>
             </div>
         </main>
     )

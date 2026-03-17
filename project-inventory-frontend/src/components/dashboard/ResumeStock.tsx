@@ -18,7 +18,7 @@ export function ResumeStock({ token,period } : { token: string,period:number }) 
   const t = useTranslations("dashboard");
   const locale = useLocale();
   const { data: inventoryData, isLoading: inventoryLoading } =
-    useInventoryValue(token,period);
+    useInventoryValue(token);
 
   const { data: movesData, isLoading: movesLoading } = movesSummary(token,period);
 

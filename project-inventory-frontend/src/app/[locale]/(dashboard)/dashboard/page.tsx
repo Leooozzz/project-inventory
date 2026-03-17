@@ -7,10 +7,10 @@ import { cookies } from "next/headers";
 
 
 
-export default async function DashboardPage() {
+export default async function DashboardPage( searchParams: { period?: string }) {
   await requiredUserLogged();
   const token = (await cookies()).get("auth_token")?.value ?? "";
-  const period = 1;
+  const period = Number(searchParams.period ?? "1");
   return (
     <main className="p-4">
       <div className="flex justify-end mb-5 items-center gap-2">
@@ -18,7 +18,7 @@ export default async function DashboardPage() {
       </div>
       <ResumeStock token={token} period={period}/>
       <MovesGraph token={token} period={period}/>
-      <NosaleStock token={token}/>
+      <NosaleStock token={token} period={period}/>
     </main>
   );
 }

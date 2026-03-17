@@ -64,5 +64,18 @@
     "stagnant_products":"Productos estagnados",
     "stagnant_products_subtitle":"Sem saidas no período selecionado",
     "stagnant_products_alert":"Nenhum produto com estagnado"
+  },
+  "category":{
+    "new_category":"Nova categoria",
+    "category_header":"Categorias",
+    "table_header_name":"Nome",
+    "table_header_product":"Produto",
+    "table_header_createdAt":"Criado em",
+    "table_header_action":"Ação",
+    "table_format_date":"pt-BR",
+    "table_message":"Nenhuma categoria encontrada",
+    "category_save":"Salvar",
+    "category_saving":"Salvando",
+    "category_placeholder":"Nome da categoria"
   }
 }

@@ -11,13 +11,13 @@ import {
 import { lowStock } from "@/app/[locale]/(dashboard)/dashboard/api/low-stock";
 import { stagnantProducts } from "@/app/[locale]/(dashboard)/dashboard/api/stagnant-products";
 
-export function NosaleStock({ token }: { token: string }) {
+export function NosaleStock({ token,period } : { token: string,period:number }) {
   const t = useTranslations("dashboard");
   const locale = useLocale();
 
   const { data: lowStockData, isLoading: stockLoading } = lowStock(token);
   const { data: stagnantData, isLoading: stagnantLoading } =
-    stagnantProducts(token);
+    stagnantProducts(token,period);
 
   const loading = stockLoading || stagnantLoading;
 
