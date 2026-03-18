@@ -76,6 +76,10 @@
     "table_message":"Nenhuma categoria encontrada",
     "category_save":"Salvar",
     "category_saving":"Salvando",
-    "category_placeholder":"Nome da categoria"
+    "category_placeholder":"Nome da categoria",
+    "edit":"Editar",
+    "delete_button":"Confirmar",
+    "delete_button_cancel":"Cancelar",
+    "delete_title":"Tem certeza que deseja excluir?"
   }
 }

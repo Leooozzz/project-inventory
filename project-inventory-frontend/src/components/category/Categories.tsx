@@ -16,6 +16,9 @@ import {
 import { useCategories } from "@/app/[locale]/(dashboard)/categories/api/categories";
 import { CategoryData } from "@/app/[locale]/(dashboard)/categories/types/categories";
 import { CreateCategoryModal } from "./CreateCategoryModal";
+import { DeleteCategory } from "./DeleteCategory";
+import { EditCategory } from "./EditCategory";
+
 
 export function Categories({ token }: { token: string }) {
   const t = useTranslations("category");
@@ -65,20 +68,9 @@ export function Categories({ token }: { token: string }) {
                 <TableCell>{formatDate(category.createdAt)}</TableCell>
 
                 <TableCell className="flex gap-2 justify-center">
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="rounded-none"
-                  >
-                    <Edit size={20} />
-                  </Button>
+                  <EditCategory token={token} id={category.id}/>
 
-                  <Button
-                    size="icon"
-                    className="bg-red-600 hover:bg-red-700 rounded-none"
-                  >
-                    <Trash2 size={20} />
-                  </Button>
+                  <DeleteCategory token={token} id={category.id}/>
                 </TableCell>
               </TableRow>
             ))}
