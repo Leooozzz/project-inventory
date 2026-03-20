@@ -81,5 +81,20 @@
     "delete_button":"Confirmar",
     "delete_button_cancel":"Cancelar",
     "delete_title":"Tem certeza que deseja excluir?"
+  },
+  "users":{
+    "user_header_name":"Nome",
+    "user_header_email":"Email",
+    "user_header_function":"Função",
+    "user_header_action":"Ação",
+    "user_isAdmin_true":"Admininistrador",
+    "user_isAdmin_false":"Membro",
+    "user_form_header":"Criar novo usuario",
+    "user_form_placeholder_name":"Nome de usuario",
+    "user_form_placeholder_email":"Digite o email",
+    "user_form_placeholder_password":"Digite a senha",
+    "user_form_placeholder_confirmpassword":"Confirme a senha",
+    "create_button":"Criar",
+    "create_button_loading":"Criando"
   }
 }

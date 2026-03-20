@@ -81,5 +81,20 @@
     "delete_button": "Confirm",
     "delete_button_cancel": "Cancel",
     "delete_title": "Are you sure you want to delete?"
+  },
+  "users": {
+    "user_header_name": "Name",
+    "user_header_email": "Email",
+    "user_header_function": "Function",
+    "user_header_action": "Action",
+    "user_isAdmin_true": "Admin",
+    "user_isAdmin_false": "Member",
+    "user_form_header": "Create new user",
+    "user_form_placeholder_name": "Username",
+    "user_form_placeholder_email": "Enter email",
+    "user_form_placeholder_password": "Enter password",
+    "user_form_placeholder_confirmpassword": "Confirm password",
+    "create_button": "Create",
+    "create_button_loading": "Creating"
   }
 }
