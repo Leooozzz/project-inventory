@@ -4,10 +4,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 type EditCategoryParams = {
   id: string;
   data: {
-    name: string,
-    email:string,
-    avatar:string,
-    password:string
+    name?: string;
+    email?: string;
+    avatar?: string | File;
+    password?: string;
   };
 };
 
@@ -16,13 +16,13 @@ export function editUser(token:string){
 
   return useMutation({
     mutationFn: async ({ id, data }: EditCategoryParams) => {
-      const res = await api.put(`/user/${id}`, data, {
+      const res = await api.put(`/users/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      return res.data;
+      return res.data.data;
     },
 
     onSuccess: () => {

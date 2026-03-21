@@ -14,8 +14,8 @@ import { CreateUserModal } from "./CreateUserModal";
 import { listUsers } from "@/app/[locale]/(dashboard)/users/api/users";
 import { userData } from "@/app/[locale]/(dashboard)/users/types/users";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Edit, Trash2 } from "lucide-react";
 import { EditUserModal } from "./EditUserModal";
+import { DeleteUserModal } from "./DeleteUserModal";
 
 export function Users({ token }: { token: string }) {
   const t = useTranslations("users");
@@ -28,7 +28,7 @@ export function Users({ token }: { token: string }) {
   return (
     <section>
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">Usuários</h1>
+        <h1 className="text-2xl font-semibold">{t("user_title")}</h1>
         <CreateUserModal token={token} />
       </div>
 
@@ -70,9 +70,7 @@ export function Users({ token }: { token: string }) {
                   <div className="flex gap-2">
                     <EditUserModal token={token} id={user.id}/>
 
-                    <button className="p-1 hover:bg-red-100 rounded">
-                      <Trash2 size={18} className="text-red-600" />
-                    </button>
+                    <DeleteUserModal token={token} id={user.id}/>
                   </div>
                 </TableCell>
               </TableRow>

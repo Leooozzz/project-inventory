@@ -94,7 +94,19 @@
     "user_form_placeholder_email":"Digite o email",
     "user_form_placeholder_password":"Digite a senha",
     "user_form_placeholder_confirmpassword":"Confirme a senha",
+    "user_title":"Usuários",
     "create_button":"Criar",
-    "create_button_loading":"Criando"
+    "create_button_loading":"Criando",
+     "delete_button":"Confirmar",
+    "delete_button_cancel":"Cancelar",
+    "delete_title":"Tem certeza que deseja excluir?"
+  },
+  "products":{
+    "products_title":"Produtos",
+    "product_table_name":"Nome",
+    "product_table_category":"Categoria",
+    "product_table_unitprice":"Preço unitario",
+    "product_table_quantitystock":"Qt. em estoque",
+    "product_table_action":"Ações"
   }
 }
