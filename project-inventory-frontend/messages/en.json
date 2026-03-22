@@ -97,9 +97,9 @@
     "user_title":"Users",
     "create_button": "Create",
     "create_button_loading": "Creating",
-     "delete_button":"Confirmar",
+    "delete_button":"Confirmar",
     "delete_button_cancel":"Cancelar",
-    "delete_title":"Tem certeza que deseja excluir?"
+    "delete_title":"Are you sure you want to delete?"
   },
   "products":{
     "products_title":"Products",
@@ -121,6 +121,9 @@
     "product_maximumquantity_placeholder":"Product maximum quantity",
     "product_minimumquantity_placeholder":"Product minimum quantity",
     "create_button": "Create",
-    "create_button_loading": "Creating"
+    "create_button_loading": "Creating",
+    "delete_button":"Confirmar",
+    "delete_button_cancel":"Cancelar",
+    "delete_title":"Are you sure you want to delete?"
   }
 }

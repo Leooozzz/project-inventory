@@ -121,6 +121,9 @@
     "product_maximumquantity_placeholder": "Quantidade máxima do produto",
     "product_minimumquantity_placeholder": "Quantidade mínima do produto",
      "create_button": "Criar",
-    "create_button_loading": "Criando"
+    "create_button_loading": "Criando",
+    "delete_button":"Confirmar",
+    "delete_button_cancel":"Cancelar",
+    "delete_title":"Tem certeza que deseja excluir?"
   }
 }
