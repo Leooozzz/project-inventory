@@ -118,7 +118,6 @@ export function CreateUserModal({ token }: { token: string }) {
             </Button>
           </form>
         </DialogContent>
-       
       </Dialog>
     </section>
   );

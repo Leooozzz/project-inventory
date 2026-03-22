@@ -14,13 +14,22 @@ import { useLocale, useTranslations } from "next-intl";
 import { useInventoryValue } from "@/app/[locale]/(dashboard)/dashboard/api/inventory-value";
 import { movesSummary } from "@/app/[locale]/(dashboard)/dashboard/api/moves-summary";
 
-export function ResumeStock({ token,period } : { token: string,period:number }) {
+export function ResumeStock({
+  token,
+  period,
+}: {
+  token: string;
+  period: number;
+}) {
   const t = useTranslations("dashboard");
   const locale = useLocale();
   const { data: inventoryData, isLoading: inventoryLoading } =
     useInventoryValue(token);
 
-  const { data: movesData, isLoading: movesLoading } = movesSummary(token,period);
+  const { data: movesData, isLoading: movesLoading } = movesSummary(
+    token,
+    period,
+  );
 
   const loading = inventoryLoading || movesLoading;
 
@@ -38,10 +47,13 @@ export function ResumeStock({ token,period } : { token: string,period:number }) 
 
         <CardContent>
           <p className="text-xl">
-            {t("card_content")}{" "}
+            R$
             {loading
               ? "..."
-              : Number(inventoryData?.totalValue ?? 0).toLocaleString(locale)}
+              : Number(inventoryData?.totalValue ?? 0).toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
           </p>
         </CardContent>
 
@@ -62,10 +74,13 @@ export function ResumeStock({ token,period } : { token: string,period:number }) 
 
         <CardContent>
           <p className="text-xl">
-            {t("card_content")}{" "}
+            R$
             {loading
               ? "..."
-              : Number(movesData?.in?.value ?? 0).toLocaleString(locale)}
+              : Number(movesData?.in?.value ?? 0).toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
           </p>
         </CardContent>
 
@@ -89,10 +104,12 @@ export function ResumeStock({ token,period } : { token: string,period:number }) 
 
         <CardContent>
           <p className="text-xl">
-            {t("card_content")}{" "}
             {loading
               ? "..."
-              : Number(movesData?.out?.value ?? 0).toLocaleString(locale)}
+              : Number(movesData?.out?.value ?? 0).toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
           </p>
         </CardContent>
 

@@ -10,6 +10,4 @@ export type productsData = {
   maximumQuantity: string;
   createdAt: string;
   updateAt: string;
-  avatar: string;
-  isAdmin: boolean;
 };
