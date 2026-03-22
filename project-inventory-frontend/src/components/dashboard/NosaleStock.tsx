@@ -11,13 +11,21 @@ import {
 import { lowStock } from "@/app/[locale]/(dashboard)/dashboard/api/low-stock";
 import { stagnantProducts } from "@/app/[locale]/(dashboard)/dashboard/api/stagnant-products";
 
-export function NosaleStock({ token,period } : { token: string,period:number }) {
+export function NosaleStock({
+  token,
+  period,
+}: {
+  token: string;
+  period: number;
+}) {
   const t = useTranslations("dashboard");
   const locale = useLocale();
 
   const { data: lowStockData, isLoading: stockLoading } = lowStock(token);
-  const { data: stagnantData, isLoading: stagnantLoading } =
-    stagnantProducts(token,period);
+  const { data: stagnantData, isLoading: stagnantLoading } = stagnantProducts(
+    token,
+    period,
+  );
 
   const loading = stockLoading || stagnantLoading;
 
@@ -53,7 +61,11 @@ export function NosaleStock({ token,period } : { token: string,period:number }) 
 
                 <div className="gap-2 flex flex-col">
                   <p>
-                    R$ {Number(product.unitPrice ?? 0).toLocaleString(locale)}
+                    R${" "}
+                    {Number(product.unitPrice ?? 0).toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </p>
                   <span>MIN: {product.minimumQuantity}</span>
                 </div>
@@ -93,7 +105,11 @@ export function NosaleStock({ token,period } : { token: string,period:number }) 
 
                 <div className="gap-2 flex flex-col">
                   <p>
-                    R$ {Number(product.unitPrice ?? 0).toLocaleString(locale)}
+                    R${" "}
+                    {Number(product.unitPrice ?? 0).toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </p>
                   <span>MIN: {product.minimumQuantity}</span>
                 </div>
