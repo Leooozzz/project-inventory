@@ -11,7 +11,7 @@ import {
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useDeleteUser } from "@/app/[locale]/(dashboard)/users/api/deleteUser";
-import router, { useRouter } from "next/router";
+import router from "next/router";
 
 type Props = {
   id: string;
