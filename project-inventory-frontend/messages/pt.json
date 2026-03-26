@@ -120,10 +120,24 @@
     "product_quantity_Placeholder": "Quantidade do produto",
     "product_maximumquantity_placeholder": "Quantidade máxima do produto",
     "product_minimumquantity_placeholder": "Quantidade mínima do produto",
-     "create_button": "Criar",
+    "create_button": "Criar",
     "create_button_loading": "Criando",
-    "delete_button":"Confirmar",
-    "delete_button_cancel":"Cancelar",
-    "delete_title":"Tem certeza que deseja excluir?"
+    "delete_button": "Confirmar",
+    "delete_button_cancel": "Cancelar",
+    "delete_title": "Tem certeza que deseja excluir?"
+  },
+  "moves": {
+    "moves_title": "Movimentações",
+    "moves_table_created": "Data",
+    "moves_table_type": "Tipo",
+    "moves_table_product_name": "Produto",
+    "moves_table_quantity": "Quantidade",
+    "moves_table_unit_value": "Valor unitario",
+    "moves_button":"Novas movimentações",
+    "type": {
+      "in": "Entrada",
+      "out": "Saída"
+    },
+    "moves_modal":"Novas movimentações"
   }
 }
