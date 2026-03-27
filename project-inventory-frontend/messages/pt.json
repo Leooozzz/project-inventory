@@ -133,11 +133,16 @@
     "moves_table_product_name": "Produto",
     "moves_table_quantity": "Quantidade",
     "moves_table_unit_value": "Valor unitario",
-    "moves_button":"Novas movimentações",
+    "moves_button": "Novas movimentações",
     "type": {
       "in": "Entrada",
       "out": "Saída"
     },
-    "moves_modal":"Novas movimentações"
+    "moves_modal": "Novas movimentações",
+    "moves_quantity_placeholder": "Digite uma quantidade",
+    "moves_select_a_type": "Selecione um tipo",
+    "product_name_select":"Selecione um produto",
+    "create_button": "Criar",
+    "create_button_loading": "Criando"
   }
 }
