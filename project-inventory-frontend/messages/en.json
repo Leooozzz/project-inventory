@@ -133,11 +133,16 @@
     "moves_table_product_name": "Product",
     "moves_table_quantity": "Quantity",
     "moves_table_unit_value": "Unit value",
-    "moves_button":"New movements",
+    "moves_button": "New movements",
     "type": {
       "in": "In",
       "out": "Out"
-    }
-  },
-  "moves_modal":"New movements"
+    },
+    "moves_modal": "New movements",
+    "moves_quantity_placeholder": "Digit a quantity",
+    "moves_select_a_type": "Select a type",
+    "product_name_select": "Select a product",
+    "create_button": "Create",
+    "create_button_loading": "Creating"
+  }
 }
