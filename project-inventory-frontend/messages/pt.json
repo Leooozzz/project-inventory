@@ -143,6 +143,8 @@
     "moves_select_a_type": "Selecione um tipo",
     "product_name_select":"Selecione um produto",
     "create_button": "Criar",
-    "create_button_loading": "Criando"
+    "create_button_loading": "Criando",
+    "next_button":"Próxima",
+    "previous_button":"Anterior"
   }
 }

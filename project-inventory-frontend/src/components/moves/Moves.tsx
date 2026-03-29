@@ -12,10 +12,15 @@ import {
 import { NewMoveModal } from "./NewMoveModal";
 import { listMoves } from "@/app/[locale]/(dashboard)/moves/api/listMoves";
 import { movesData } from "@/app/[locale]/(dashboard)/moves/types/moves";
+import { useState } from "react";
+import { Button } from "../ui/button";
 
 export function Moves({ token }: { token: string }) {
   const t = useTranslations("moves");
-  const { data: movesData, isLoading } = listMoves(token);
+  const [page, setPage] = useState(0);
+  const limit = 10;
+  const { data: movesData, isLoading } = listMoves(token, page * limit, limit);
+
   return (
     <section>
       <div className="flex justify-between items-center">
@@ -63,6 +68,22 @@ export function Moves({ token }: { token: string }) {
             ))}
           </TableBody>
         </Table>
+        <div className="flex mt-10 justify-end">
+          <Button
+            onClick={() => setPage((p) => Math.max(p - 1, 0))}
+            disabled={page === 0}
+            className="rounded-none"
+          >
+            {t("previous_button")}
+          </Button>
+
+          <Button
+            onClick={() => setPage((p) => p + 1)}
+            className="rounded-none"
+          >
+            {t("next_button")}
+          </Button>
+        </div>
       </div>
     </section>
   );

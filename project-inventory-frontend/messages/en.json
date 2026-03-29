@@ -143,6 +143,8 @@
     "moves_select_a_type": "Select a type",
     "product_name_select": "Select a product",
     "create_button": "Create",
-    "create_button_loading": "Creating"
+    "create_button_loading": "Creating",
+    "next_button":"Next",
+    "previous_button":"Previous"
   }
 }
