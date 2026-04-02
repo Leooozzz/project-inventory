@@ -5,21 +5,24 @@ import { useQuery } from "@tanstack/react-query";
 import { Product } from "../type/product";
 import { getDateRange } from "@/helper/getDateRange";
 
-
-export function stagnantProducts(token: string,period:number) {
-  const { startDate, endDate } = getDateRange(period)
+export function stagnantProducts(
+  token: string,
+  startDate: string,
+  endDate: string,
+) {
   return useQuery<Product[]>({
-    queryKey: ["stagnant-products",period],
+    queryKey: ["stagnant-products", startDate, endDate],
     enabled: !!token,
     queryFn: async () => {
-      const res = await api.get(
-        `/dashboard/stagnant-products`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await api.get(`/dashboard/stagnant-products`, {
+        params: {
+          startDate,
+          endDate,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       return res.data.data;
     },

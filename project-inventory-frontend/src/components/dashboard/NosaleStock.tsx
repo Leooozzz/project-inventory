@@ -13,18 +13,20 @@ import { stagnantProducts } from "@/app/[locale]/(dashboard)/dashboard/api/stagn
 
 export function NosaleStock({
   token,
-  period,
+  startDate,
+  endDate,
 }: {
   token: string;
-  period: number;
+  startDate: string;
+  endDate: string;
 }) {
   const t = useTranslations("dashboard");
-  const locale = useLocale();
 
   const { data: lowStockData, isLoading: stockLoading } = lowStock(token);
   const { data: stagnantData, isLoading: stagnantLoading } = stagnantProducts(
     token,
-    period,
+    startDate,
+    endDate,
   );
 
   const loading = stockLoading || stagnantLoading;

@@ -124,7 +124,9 @@
     "create_button_loading": "Creating",
     "delete_button": "Confirmar",
     "delete_button_cancel": "Cancelar",
-    "delete_title": "Are you sure you want to delete?"
+    "delete_title": "Are you sure you want to delete?",
+    "next_button": "Next",
+    "previous_button": "Previous"
   },
   "moves": {
     "moves_title": "Movements",
@@ -144,7 +146,7 @@
     "product_name_select": "Select a product",
     "create_button": "Create",
     "create_button_loading": "Creating",
-    "next_button":"Next",
-    "previous_button":"Previous"
+    "next_button": "Next",
+    "previous_button": "Previous"
   }
 }

@@ -10,25 +10,27 @@ import {
   CardTitle,
 } from "../ui/card";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useInventoryValue } from "@/app/[locale]/(dashboard)/dashboard/api/inventory-value";
 import { movesSummary } from "@/app/[locale]/(dashboard)/dashboard/api/moves-summary";
 
 export function ResumeStock({
   token,
-  period,
+  startDate,
+  endDate,
 }: {
   token: string;
-  period: number;
+  startDate: string;
+  endDate: string;
 }) {
   const t = useTranslations("dashboard");
-  const locale = useLocale();
   const { data: inventoryData, isLoading: inventoryLoading } =
     useInventoryValue(token);
 
   const { data: movesData, isLoading: movesLoading } = movesSummary(
     token,
-    period,
+    startDate,
+    endDate,
   );
 
   const loading = inventoryLoading || movesLoading;
@@ -104,6 +106,7 @@ export function ResumeStock({
 
         <CardContent>
           <p className="text-xl">
+            R$
             {loading
               ? "..."
               : Number(movesData?.out?.value ?? 0).toLocaleString("pt-BR", {

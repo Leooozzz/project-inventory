@@ -17,10 +17,29 @@ import { DeleteProductModal } from "./DeleteProductModal";
 import { Card } from "../ui/card";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { useEffect, useState } from "react";
 
 export function Products({ token }: { token: string }) {
   const t = useTranslations("products");
-  const { data: productsData, isLoading } = listProducts(token);
+  const [page, setPage] = useState(0);
+  const limit = 10;
+  const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const { data: productsData, isLoading } = listProducts(
+    token,
+    debouncedSearch,
+    page * limit,
+    limit,
+  );
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+      setPage(0);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [search]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -36,7 +55,9 @@ export function Products({ token }: { token: string }) {
         <Card className="p-4">
           <form action="" method="post" className="flex gap-2">
             <Input
-              className="rounded-none "
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="rounded-none"
               placeholder={t("product_placeholder_search")}
             />
             <Button className="cursor-pointer rounded-none">
@@ -90,6 +111,22 @@ export function Products({ token }: { token: string }) {
             ))}
           </TableBody>
         </Table>
+        <div className="flex mt-10 justify-end">
+          <Button
+            onClick={() => setPage((p) => Math.max(p - 1, 0))}
+            disabled={page === 0}
+            className="rounded-none"
+          >
+            {t("previous_button")}
+          </Button>
+
+          <Button
+            onClick={() => setPage((p) => p + 1)}
+            className="rounded-none"
+          >
+            {t("next_button")}
+          </Button>
+        </div>
       </div>
     </section>
   );

@@ -31,15 +31,22 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  let user = null;
+
+  try{
+    user = await requiredUserLogged()
+  }catch{
+    user = null
+  }
   return (
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider>
-          <Header />
-
-          <QueryProvider>{children}</QueryProvider>
-
-          <Footer />
+          <QueryProvider>
+            <Header user={user}/>
+            {children}
+            <Footer />
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

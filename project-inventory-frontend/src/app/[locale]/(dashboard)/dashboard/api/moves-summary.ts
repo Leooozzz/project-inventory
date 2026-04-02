@@ -1,16 +1,22 @@
 "use client";
 
-import { getDateRange } from "@/helper/getDateRange";
 import { api } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 
-export function movesSummary(token: string,period:number) {
-  const { startDate, endDate } = getDateRange(period)
+export function movesSummary(
+  token: string,
+  startDate: string,
+  endDate: string
+) {
   return useQuery({
-    queryKey: ["moves-summary",period],
+    queryKey: ["moves-summary", startDate, endDate],
     enabled: !!token,
     queryFn: async () => {
-      const res = await api.get(`/dashboard/moves-summary?period=${period}`, {
+      const res = await api.get(`/dashboard/moves-summary`, {
+        params: {
+          startDate,
+          endDate,
+        },
         headers: {
           Authorization: `Bearer ${token}`,
         },

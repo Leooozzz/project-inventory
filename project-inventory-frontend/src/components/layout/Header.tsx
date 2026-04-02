@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { LucideLanguages } from "lucide-react";
+import { LayoutDashboard, LogOutIcon, LucideLanguages } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -15,8 +15,22 @@ import { useRouter, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "../ui/avatar";
 
-export function Header() {
+type UserLogged = {
+  name: string;
+  email: string;
+  avatar: string | null;
+  isAdmin: boolean;
+};
+export function Header({ user }: { user: UserLogged | null }) {
   const t = useTranslations("components.header");
   const locale = useLocale();
   const router = useRouter();
@@ -26,7 +40,6 @@ export function Header() {
     const query = Object.fromEntries(
       new URLSearchParams(window.location.search),
     );
-
     router.replace({ pathname, query }, { locale: currentLocale });
   }
 
@@ -49,15 +62,61 @@ export function Header() {
               <SelectValue />
             </SelectTrigger>
 
-            <SelectContent>
-              <SelectItem value="pt">Pt-br</SelectItem>
-              <SelectItem value="en">En-us</SelectItem>
+            <SelectContent className="rounded-none">
+              <SelectItem value="pt" className="rounded-none">
+                Pt-br
+              </SelectItem>
+              <SelectItem value="en" className="rounded-none">
+                En-us
+              </SelectItem>
             </SelectContent>
           </Select>
+          {user ? (
+            <div className="flex items-center gap-3">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild className="rounded-none">
+                  <Button
+                    variant="ghost"
+                    className="flex items-center gap-2 px-2 rounded-none"
+                  >
+                    <Avatar className="h-8 w-8">
+                      <AvatarFallback>
+                        {user.avatar ?? user.name?.[0]}
+                      </AvatarFallback>
+                    </Avatar>
 
-          <Button className="py-5 cursor-pointer rounded-none flex ">
-            <Link href={"/auth/register"}>{t("button_header")}</Link>
-          </Button>
+                    <div className="flex flex-col items-start leading-tight">
+                      <span className="text-sm font-medium">
+                        {user.name.split(" ")[0]}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        {user.email}
+                      </span>
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent className="w-40 rounded-none">
+                  <DropdownMenuItem className="rounded-none">
+                    <Link href={"/dashboard"}>
+                      Dashboard
+                    </Link>
+                    <DropdownMenuShortcut><LayoutDashboard/></DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-none text-red-600 cursor-pointer">
+                    Logout
+                    <DropdownMenuShortcut><LogOutIcon className="text-red-600"/></DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          ) : (
+            <Link href="/auth/register">
+              <Button className="py-5 cursor-pointer rounded-none flex">
+                {t("button_header")}
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
       <Separator />
