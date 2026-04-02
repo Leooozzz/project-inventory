@@ -112,9 +112,9 @@ export default function HomePage() {
       </section>
       <div className="flex justify-center mt-10 mb-10">
         <Link href="/auth/register">
-              <Button className="mt-4 text-2xl p-6 rounded-none ">
-                {t("button_start")}
-              </Button>
+          <Button className="mt-4 text-2xl p-6 rounded-none ">
+            {t("button_start")}
+          </Button>
         </Link>
       </div>
     </main>

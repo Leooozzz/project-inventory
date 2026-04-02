@@ -124,7 +124,9 @@
     "create_button_loading": "Criando",
     "delete_button": "Confirmar",
     "delete_button_cancel": "Cancelar",
-    "delete_title": "Tem certeza que deseja excluir?"
+    "delete_title": "Tem certeza que deseja excluir?",
+    "next_button": "Próxima",
+    "previous_button": "Anterior"
   },
   "moves": {
     "moves_title": "Movimentações",
@@ -141,8 +143,10 @@
     "moves_modal": "Novas movimentações",
     "moves_quantity_placeholder": "Digite uma quantidade",
     "moves_select_a_type": "Selecione um tipo",
-    "product_name_select":"Selecione um produto",
+    "product_name_select": "Selecione um produto",
     "create_button": "Criar",
-    "create_button_loading": "Criando"
+    "create_button_loading": "Criando",
+    "next_button": "Próxima",
+    "previous_button": "Anterior"
   }
 }

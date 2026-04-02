@@ -1,5 +1,4 @@
 import AppSidebar from "@/components/dashboard/app-sidebar";
-import { IconProfile } from "@/components/IconProfile";
 import {
   SidebarInset,
   SidebarProvider,

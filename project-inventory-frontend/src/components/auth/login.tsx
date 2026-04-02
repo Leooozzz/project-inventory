@@ -57,7 +57,7 @@ export function LoginForm() {
       </h1>
 
       <div>
-        <Input type="email" placeholder="E-mail" {...register("email")} />
+        <Input type="email" placeholder="E-mail" {...register("email")} className="rounded-none"/>
         {errors.email && (
           <span className="text-red-500 text-sm">{errors.email.message}</span>
         )}
@@ -67,6 +67,7 @@ export function LoginForm() {
         <Input
           type="password"
           placeholder="Password"
+          className="rounded-none"
           {...register("password")}
         />
         {errors.password && (
