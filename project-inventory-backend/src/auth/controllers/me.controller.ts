@@ -1,7 +1,6 @@
 import { RequestHandler } from "express";
 import { AppError } from "../../utils/apperror";
 import { getUserByIdPublic } from "../services/me.service";
-import { formatUser } from "../../utils/helper/helper";
 
 export const getMe: RequestHandler = async (req, res) => {
   if (!req.user) return null;

@@ -1,12 +1,15 @@
 import { integer, numeric, pgEnum, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { categories } from "./category";
-
-export const unitTypeEnum = pgEnum('unit_type',['kg','g','l','ml','un'])
+import { teams } from "./teams";
+import { unitTypeEnum } from "./enums";
 
 export const products = pgTable('products',{
     id:uuid('id').primaryKey().defaultRandom(),
     name:text('name').notNull(),
     categoryId:uuid('category_id').notNull().references(()=>categories.id),
+     teamId: uuid("team_id")
+        .notNull()
+        .references(() => teams.id),
     unitPrice: integer('unit_price'),
     unitType:unitTypeEnum('unit_type').notNull().default('un'),
     quantity:numeric('quantity').notNull().default('0'),

@@ -1,12 +1,17 @@
 import { integer, numeric, pgEnum, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 import { products } from "./products";
 import { users } from "./users";
+import { teams } from "./teams";
+import { moveTypeEnum } from "./enums";
 
-export const moveTypeEnum=pgEnum('move_type',['in','out'])
+
 
 export const moves = pgTable('moves',{
     id:uuid('id').primaryKey().defaultRandom(),
     productId:uuid('product_id').notNull().references(()=>products.id),
+     teamId: uuid("team_id")
+        .notNull()
+        .references(() => teams.id),
     userId:uuid('user_id').notNull().references(()=>users.id),
     type:moveTypeEnum('type').notNull(),
     quantity:numeric('quantity').notNull(),

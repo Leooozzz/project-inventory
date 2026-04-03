@@ -27,7 +27,7 @@ export const VerifyRequest = async (req: Request) => {
 export const authMiddleware: RequestHandler = async (req, res, next) => {
   const user = await VerifyRequest(req);
   if (!user) {
-    return res.status(401).json({ errot: "Acess denied" });
+    return res.status(401).json({ error: "Acess denied" });
   }
   req.user = user;
 

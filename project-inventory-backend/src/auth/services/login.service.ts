@@ -1,6 +1,5 @@
-import { getUserByEmail, verifyPassword } from "../../utils/helper/helper";
-import { generateOTP } from "../../otp/services/otp.services";
-import { sendOtpEmail } from "../../email/services/email.services";
+import { formatUser, getUserByEmail, verifyPassword } from "../../utils/helper/helper";
+
 
 export const loginService = async (email: string, password: string) => {
   email = email.toLowerCase();
@@ -8,7 +7,5 @@ export const loginService = async (email: string, password: string) => {
   if (!user) return null;
   const isPasswordValid = await verifyPassword(password, user.password);
   if (!isPasswordValid) return null;
-
-
-  return user
+  return user;
 };
