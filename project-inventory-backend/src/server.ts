@@ -5,6 +5,7 @@ import { configDotenv } from "dotenv";
 import route from "./routes/index.routes";
 import { globalErrorHandler } from "./middlewares/error.middleware";
 import whatsappRoutes from "./routes/whats.routes";
+import path from "path";
 
 configDotenv();
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/static", express.static(path.join(process.cwd(), "public")));
 
 app.use("/api/whatsapp", whatsappRoutes);
 app.use("/api", route);
