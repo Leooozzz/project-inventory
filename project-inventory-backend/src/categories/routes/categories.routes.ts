@@ -5,11 +5,11 @@ import { getCategory } from "../controllers/category.controller";
 import { updateCategory } from "../controllers/update.controller";
 import { deleteCategory } from "../controllers/delete.controller";
 
-const route = Router()
+const route = Router();
 
-route.post('/',createCategory)
-route.get('/',listCategories)
-route.get('/:id',getCategory)
-route.put('/:id',updateCategory)
-route.delete('/:id',deleteCategory)
-export default route
+route.post("/", createCategory);
+route.get("/", listCategories);
+route.get("/:id", getCategory);
+route.put("/:id", updateCategory);
+route.delete("/:id", deleteCategory);
+export default route;
