@@ -10,7 +10,7 @@ export const login: RequestHandler = async (req, res) => {
   if (!result) {
     throw new AppError("Invalid credentials", 401);
   }
-  
   const token = createToken(result)
-  res.status(201).json({ error: null, data: result,token},);
+  const userFormated = formatUser(result)
+  res.status(201).json({ error: null, data: userFormated,token},);
 };

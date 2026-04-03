@@ -11,9 +11,7 @@ export const createUser = async (data: newUser) => {
   if (existingUser) {
     throw new Error("This email is already in use.");
   }
-
   const hashedPassword = await hashPassword(data.password);
-
   const userToInsert: newUser = {
     ...data,
     email: data.email.toLowerCase(),

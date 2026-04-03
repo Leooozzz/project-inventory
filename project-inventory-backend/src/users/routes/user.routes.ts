@@ -12,8 +12,6 @@ const router = Router();
 // /api/users/
 
 router.post("/",createUser);
-
-router.use(authMiddleware);
 router.get('/',listUser)
 router.get('/:id',getUser)
 router.delete('/:id',deleteUser)

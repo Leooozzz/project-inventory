@@ -37,9 +37,9 @@ export const formatUser = (user: User) => {
   if (userWithoutPassword.avatar) {
     userWithoutPassword.avatar = `${process.env.BASE_URL}/static/avatars/${userWithoutPassword.avatar}`;
   }
-  const {id,name,email,avatar,isAdmin} =userWithoutPassword
+  const {id,name,email,avatar,role} =userWithoutPassword
 
-  return {id,name,email,avatar,isAdmin}
+  return {id,name,email,avatar,role}
 };
 
 export const createToken =(user: User) => {
@@ -55,7 +55,7 @@ export const getUserById = async (id: string) => {
 };
 
 
-export const validateToken = async (token: string) => {
+/*export const validateToken = async (token: string) => {
   await readJsonWebToken(token);
   const result = await db
     .select()
@@ -67,3 +67,4 @@ export const validateToken = async (token: string) => {
   if (!user || user.deletedAt) return null;
   return user;
 };
+*/
