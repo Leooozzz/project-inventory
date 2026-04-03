@@ -7,16 +7,18 @@ import { saveAvatar } from "../services/file.service";
 export const updateUser: RequestHandler = async (req, res) => {
   const { id } = userIdSchema.parse(req.params);
   const data = updateUserSchema.parse(req.body);
-
-  let avatarFileName:string| undefined
-  if(req.file){
-    avatarFileName = await saveAvatar(req.file.buffer,req.file.originalname)
+  const authUser = req.user;
+  if (!authUser) {
+    return res.status(401).json({ error: "Unauthorized" });
   }
-  const updateData = {...data}
-  if(avatarFileName){
+  let avatarFileName: string | undefined;
+  if (req.file) {
+    avatarFileName = await saveAvatar(req.file.buffer, req.file.originalname);
+  }
+  const updateData = { ...data };
+  if (avatarFileName) {
     updateData.avatar = avatarFileName;
   }
-  const updatedUser = await updateUserSevice(id, updateData);
+  const updatedUser = await updateUserSevice(id, authUser.teamId, updateData);
   res.status(200).json({ error: null, data: updatedUser });
 };
-

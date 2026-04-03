@@ -1,6 +1,6 @@
 import { Request, RequestHandler } from "express"
 import { readJsonWebToken } from "../libs/jwt";
-import { formatUser, getUserById } from "../utils/helper/helper";
+import {  getUserByIdAuth } from "../utils/helper/helper";
 
 export type TokenTypePayload = {
   id: string;
@@ -15,7 +15,7 @@ export const VerifyRequest = async (req: Request) => {
       const payload = readJsonWebToken(authSplit[1]);
       if (payload) {
         const userId = (payload as TokenTypePayload).id;
-        const user = await getUserById(userId);
+        const user = await getUserByIdAuth(userId);
         if (user) return user;
       }
     }

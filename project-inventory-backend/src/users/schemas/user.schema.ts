@@ -8,5 +8,4 @@ export const createUserSchema = z.object({
     .string()
     .min(8, "The password must be at least 8 characters long."),
   role:userTypeEnum,
-  teamId:z.string().uuid()
 });

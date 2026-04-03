@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { User, users } from "../../db/schema";
 import { db } from "../../db/connection";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { configDotenv } from "dotenv";
 import {  createJsonWebToken, readJsonWebToken } from "../../libs/jwt";
 import { Request } from "express";
@@ -46,8 +46,20 @@ export const createToken =(user: User) => {
   return createJsonWebToken({ id: user.id });
 };
 
-export const getUserById = async (id: string) => {
-  const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
+export const getUserByIdAuth = async (id: string) => {
+  const result = await db
+    .select()
+    .from(users)
+    .where(eq(users.id, id))
+    .limit(1);
+
+  const user = result[0];
+  if (!user || user.deletedAt) return null;
+
+  return user;
+};
+export const getUserById = async (id: string,teamId:string) => {
+  const result = await db.select().from(users).where(and(eq(users.id, id),eq(users.teamId,teamId))).limit(1);
 
   const user = result[0];
   if(!user || user.deletedAt) return null;
