@@ -17,7 +17,6 @@ route.use("/auth", authRoutes);
 route.use(authMiddleware);
 route.use("/users", userRoutes);
 route.use("/categories", categoriesRoutes);
-
 route.use("/products", productRoutes);
 route.use("/moves", movesRoutes);
 route.use("/dashboard", dashboardRoutes);
