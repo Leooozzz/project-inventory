@@ -6,6 +6,7 @@ import categoriesRoutes from "../categories/routes/categories.routes";
 import productRoutes from "../products/routes/product.routes";
 import movesRoutes from "../moves/routes/moves.routes";
 import dashboardRoutes from "../dashboard/routes/route";
+import instanceRoutes from "../evolution/instances/routes/instance.route"
 
 const route = Router();
 
@@ -21,4 +22,5 @@ route.use("/products", productRoutes);
 route.use("/moves", movesRoutes);
 route.use("/dashboard", dashboardRoutes);
 
+route.use("/evolution/instance",instanceRoutes)
 export default route;
