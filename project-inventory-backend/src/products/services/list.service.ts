@@ -1,15 +1,22 @@
-import { eq, ilike, isNull, sql } from "drizzle-orm";
+import { eq, ilike, isNull, sql,and } from "drizzle-orm";
 import { db } from "../../db/connection";
 import { categories, products } from "../../db/schema";
 
 export const listProductsService = async (
-  name?: string,
+  name: string | undefined,
   offset: number = 0,
   limit: number = 10,
+  teamId: string
 ) => {
-  const whereCondition = name
-    ? sql`${products.deletedAt} IS NULL AND ${ilike(products.name, `%${name}%`)}`
-    : isNull(products.deletedAt);
+  const conditions = [
+    isNull(products.deletedAt),
+    eq(products.teamId, teamId),
+  ];
+
+  if (name) {
+    conditions.push(ilike(products.name, `%${name}%`));
+  }
+
   const productsList = await db
     .select({
       id: products.id,
@@ -22,12 +29,13 @@ export const listProductsService = async (
       minimumQuantity: products.minimumQuantity,
       maximumQuantity: products.maximumQuantity,
       createdAt: products.createdAt,
-      updateAt: products.updatedAt,
+      updatedAt: products.updatedAt,
     })
     .from(products)
     .leftJoin(categories, eq(products.categoryId, categories.id))
-    .where(whereCondition)
+    .where(and(...conditions))
     .offset(offset)
     .limit(limit);
+
   return productsList;
 };

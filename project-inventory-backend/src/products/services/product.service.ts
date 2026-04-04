@@ -2,7 +2,7 @@ import { and, eq, isNull } from "drizzle-orm"
 import { db } from "../../db/connection"
 import { categories, products } from "../../db/schema"
 
-export const getProductByIdWithCategoryDetails = async (id:string) => {
+export const getProductByIdWithCategoryDetails = async (id:string,teamId:string) => {
       const result = await db
         .select({
           id: products.id,
@@ -19,7 +19,7 @@ export const getProductByIdWithCategoryDetails = async (id:string) => {
         })
         .from(products)
         .leftJoin(categories, eq(products.categoryId, categories.id))
-        .where(and(eq(products.id,id),isNull(products.deletedAt)))
+        .where(and(eq(products.id,id),eq(products.teamId,teamId),isNull(products.deletedAt)))
         .limit(1)
 
         if(!result[0]) return null
