@@ -4,7 +4,7 @@ import { listCategoriesServices } from "../services/list.service";
 
 export const listCategories:RequestHandler = async (req,res) => {
     const {includeProductCount} = listCategoriesSchema.parse(req.query)
-     const authUser = req.user;
+    const authUser = req.user;
     if (!authUser) {
       return res.status(401).json({ error: "Unauthorized" });
     }

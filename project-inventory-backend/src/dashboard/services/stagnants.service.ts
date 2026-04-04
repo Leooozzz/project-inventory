@@ -3,8 +3,11 @@ import { db } from "../../db/connection";
 import { DateRangeInput } from "../schema/moves.schema";
 import { moves, products } from "../../db/schema";
 
-export const stagnantProductsServices = async (range: DateRangeInput) => {
-  const conditions = [eq(moves.type, "out")];
+export const stagnantProductsServices = async (
+  range: DateRangeInput,
+  teamId: string,
+) => {
+  const conditions = [eq(moves.type, "out"), eq(moves.teamId, teamId)];
   if (range.startDate) {
     const startDate = new Date(range.startDate);
     conditions.push(gte(moves.createdAt, startDate));
@@ -20,6 +23,7 @@ export const stagnantProductsServices = async (range: DateRangeInput) => {
     .where(
       and(
         isNull(products.deletedAt),
+        eq(products.teamId, teamId),
         sql`${products.id} NOT IN (
   SELECT ${moves.productId}
   FROM ${moves}

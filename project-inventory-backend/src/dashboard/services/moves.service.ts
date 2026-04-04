@@ -1,13 +1,14 @@
-import { and, gte, lte, sql } from "drizzle-orm";
+import { and, eq, gte, lte, sql } from "drizzle-orm";
 import { DateRangeInput } from "../schema/moves.schema";
 import { moves } from "../../db/schema";
 import { db } from "../../db/connection";
 
-export const movesSumaryService = async (range: DateRangeInput) => {
+export const movesSumaryService = async (range: DateRangeInput,teamId:string) => {
   const conditions = [];
   if (range.startDate) {
     const startDate = new Date(range.startDate);
     conditions.push(gte(moves.createdAt, startDate));
+    conditions.push(eq(moves.teamId,teamId))
   }
   if (range.endDate) {
     const endDate = new Date(range.endDate);

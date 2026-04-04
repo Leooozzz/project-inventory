@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { db } from "../../db/connection";
 import { moves, NewMove, products } from "../../db/schema";
 import { AppError } from "../../utils/apperror";
@@ -11,7 +11,9 @@ export const addMoveService = async (data: Omit<NewMove, "unitPrice">) => {
         unitPrice: products.unitPrice,
       })
       .from(products)
-      .where(eq(products.id, data.productId))
+      .where(
+        and(eq(products.id, data.productId), eq(products.teamId, data.teamId)),
+      )
       .for("update");
 
     if (product.length === 0) {
@@ -41,7 +43,9 @@ export const addMoveService = async (data: Omit<NewMove, "unitPrice">) => {
     await tx
       .update(products)
       .set({ quantity: newQuantity.toString(), updatedAt: new Date() })
-      .where(eq(products.id, data.productId));
+      .where(
+        and(eq(products.id, data.productId), eq(products.teamId, data.teamId)),
+      );
 
     return move;
   });
