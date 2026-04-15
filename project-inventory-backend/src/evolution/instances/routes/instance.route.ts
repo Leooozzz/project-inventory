@@ -5,6 +5,6 @@ import { connect } from "../controller/connect.controller";
 const route = Router();
 
 route.post("/create", create);
-route.get("/connect", connect);
+route.get("/connect/:instanceName", connect);
 
 export default route;
