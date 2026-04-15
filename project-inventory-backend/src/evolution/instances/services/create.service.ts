@@ -1,3 +1,6 @@
+import { db } from "../../../db/connection";
+import { whatsappInstance } from "../../../db/schema";
+
 type instanceType = {
   instance: {
     instanceName: string;
@@ -10,6 +13,7 @@ type instanceType = {
 export async function createInstance(
   instanceName: string,
   phone: string,
+  teamId: string,
 ): Promise<instanceType> {
   const EVOLUTION_API =
     process.env.EVOLUTION_API_URL || "http://evolution-api:8080";
@@ -29,5 +33,12 @@ export async function createInstance(
 
   const data = (await response.json()) as instanceType;
 
+  await db.insert(whatsappInstance).values({
+    id: data.instance.instanceId,
+    phone,
+    name: instanceName,
+    teamId: teamId,
+    status: data.instance.status === "open" ? "connected" : "disconnected",
+  });
   return data;
 }

@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup backend env
+        working-directory: project-inventory-backend
+        run: cp .env.example .env
+
+      - name: Setup frontend env
+        working-directory: project-inventory-frontend
+        run: cp .env.example .env
+
+      - name: Build containers
+        run: docker compose build backend db
+
+      - name: Start services
+        run: docker compose up -d db backend
+
+      - name: Wait for backend
+        run: sleep 15
+
+      - name: Test backend
+        run: curl http://localhost:3001 || exit 1
+
+      - name: Stop containers
+        run: docker compose down
