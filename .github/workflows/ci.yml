@@ -13,11 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - name: Setup backend env
+        working-directory: project-inventory-backend
+        run: cp .env.example .env
 
       - name: Build containers
-        run: docker compose build backend frontend db
+        run: docker compose build backend db
 
       - name: Start services
         run: docker compose up -d db backend
@@ -41,8 +44,10 @@ jobs:
         with:
           node-version: 20
 
-      - run: npm install
+      - name: Install dependencies
         working-directory: project-inventory-frontend
+        run: npm install
 
-      - run: npm run build
+      - name: Build frontend
         working-directory: project-inventory-frontend
+        run: npm run build
