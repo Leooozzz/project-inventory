@@ -19,6 +19,10 @@ jobs:
         working-directory: project-inventory-backend
         run: cp .env.example .env
 
+      - name: Setup frontend env
+        working-directory: project-inventory-frontend
+        run: cp .env.example .env
+
       - name: Build containers
         run: docker compose build backend db
 
@@ -33,25 +37,3 @@ jobs:
 
       - name: Stop containers
         run: docker compose down
-
-  frontend:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup frontend env
-        working-directory: project-inventory-frontend
-        run: cp .env.example .env
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        working-directory: project-inventory-frontend
-        run: npm install
-
-      - name: Build frontend
-        working-directory: project-inventory-frontend
-        run: npm run build
